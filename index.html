@@ -1,252 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>rizzy store — profil</title>
-<style>
-  :root{
-    --bg:#000;
-    --card:#0b0b0b;
-    --muted:#9aa4b2;
-    --white:#f6f9fb;
-    --btn-bg:#111215;
-    --accent1:#ff6b6b;
-    --accent2:#ffd86b;
-    --accent3:#8a66ff;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    min-height:100vh;
-    background:var(--bg);
-    color:var(--white);
-    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    display:flex;
-    justify-content:center;
-    padding:28px 12px;
-  }
-  .wrap{
-    width:100%;
-    max-width:440px;
-  }
-  .topbar{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:8px;
-  }
-  .card{
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-    border-radius:12px;
-    padding:24px 18px 28px;
-    border:1px solid rgba(255,255,255,0.03);
-    box-shadow:0 8px 30px rgba(0,0,0,0.6);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rizzy Store</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
 
-  .avatar-wrap{display:flex;justify-content:center;margin-bottom:12px}
-  .avatar-ring{
-    width:122px;height:122px;border-radius:50%;display:grid;place-items:center;
-    padding:6px;
-    background:conic-gradient(from 140deg, var(--accent1), #ff7bb0, var(--accent3), var(--accent2));
-  }
-  .avatar{
-    width:100%;height:100%;border-radius:50%;overflow:hidden;border:4px solid rgba(0,0,0,0.45);background:#222;
-  }
-  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 30px 15px;
+    }
 
-  .name-row{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:6px}
-  .name{font-size:22px;font-weight:800}
-  .verified{width:20px;height:20px;border-radius:50%;background:#1f9fff;display:grid;place-items:center;font-size:12px;color:white;font-weight:700;box-shadow:0 2px 8px rgba(31,159,255,0.12)}
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff006f;
+      margin-bottom: 15px;
+    }
 
-  .bio{color:var(--muted);text-align:center;margin-top:8px;font-size:14px}
+    h1 {
+      font-size: 1.8em;
+      margin: 10px 0;
+    }
 
-  /* button list */
-  .links{margin-top:18px;display:flex;flex-direction:column;gap:12px}
-  .link-btn{
-    display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;
-    background:var(--btn-bg);text-decoration:none;color:var(--white);border:1px solid rgba(255,255,255,0.03);
-    transition:transform .06s ease, box-shadow .12s ease;
-  }
-  .link-btn:active{transform:translateY(2px)}
-  .link-icon{width:26px;height:26px;display:grid;place-items:center;flex:0 0 26px}
-  .link-text{flex:1;text-align:left;font-weight:600}
-  .link-sub{color:var(--muted);font-size:13px;margin-top:3px}
+    p {
+      color: #aaa;
+      margin-bottom: 30px;
+    }
 
-  /* DANA card */
-  .payment{
-    margin-top:18px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
-    padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-  }
-  .pay-left{display:flex;gap:12px;align-items:center}
-  .pay-logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,#ffb347,#ffcc33);display:grid;place-items:center;color:#000;font-weight:800}
-  .pay-info{display:flex;flex-direction:column}
-  .pay-title{font-weight:800}
-  .pay-number{color:var(--muted);font-size:14px;margin-top:4px}
-  .copy-btn{padding:8px 12px;border-radius:8px;background:#111217;border:1px solid rgba(255,255,255,0.03);cursor:pointer;color:var(--white);font-weight:700}
+    .btn {
+      display: block;
+      background-color: #111;
+      color: white;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 14px;
+      margin: 10px 0;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
 
-  .footer{margin-top:18px;color:var(--muted);text-align:center;font-size:13px}
+    .btn:hover {
+      background-color: #222;
+      transform: scale(1.05);
+    }
 
-  /* small screen tweaks */
-  @media (max-width:420px){
-    .avatar-ring{width:104px;height:104px}
-    .link-btn{padding:12px}
-  }
+    .spotify {
+      background-color: #181818;
+      border-radius: 12px;
+      padding: 10px;
+      margin-top: 30px;
+    }
 
-  /* toast */
-  .toast{
-    position:fixed;left:50%;transform:translateX(-50%);bottom:28px;background:rgba(0,0,0,0.8);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;border:1px solid rgba(255,255,255,0.04);display:none;
-  }
-</style>
+    .spotify iframe {
+      border-radius: 12px;
+      width: 100%;
+    }
+
+    .wa-group {
+      background-color: #25D366;
+      color: #000;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card" role="main">
-      <div class="avatar-wrap">
-        <div class="avatar-ring" aria-hidden="true">
-          <!-- Ganti src di bawah dengan URL/file gambar Obito mu -->
-          <a id="avatarLink" class="avatar" href="#" title="Avatar">
-            <img id="avatarImg" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='%23222'/><text x='50%' y='50%' fill='%23777' font-size='24' font-family='Arial' text-anchor='middle' dy='8'>Avatar</text></svg>" alt="avatar" />
-          </a>
-        </div>
-      </div>
+  <div class="container">
+    <img src="https://i.ibb.co/gg1YB3J/raldz-pfp.jpg" alt="Rizzy Store" class="profile-pic">
 
-      <div class="name-row">
-        <div class="name">rizzy store</div>
-        <div class="verified" title="Verified">✓</div>
-      </div>
+    <h1>Rizzy Store</h1>
+    <p>Tempat Top Up & Jualan Murah Terpercaya 💎</p>
 
-      <div class="bio">if only the world knew how i feel</div>
+    <a href="https://wa.me/6283873474932" class="btn">💬 Chat WhatsApp</a>
+    <a href="https://chat.whatsapp.com/DeMTe35nqVAEWOtYvJVwFv?mode=wwt" class="btn wa-group">👥 Join Grup WhatsApp</a>
+    <a href="https://www.instagram.com/" class="btn">📸 Instagram</a>
+    <a href="https://t.me/" class="btn">💬 Telegram</a>
+    <a href="https://youtube.com/" class="btn">▶️ YouTube</a>
+    <a href="https://tiktok.com/" class="btn">🎵 TikTok</a>
 
-      <div class="links" aria-label="Links">
-        <!-- Instagram (dummy) -->
-        <a class="link-btn" href="#" onclick="return false;">
-          <div class="link-icon" aria-hidden="true">
-            <!-- Instagram icon (svg) -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/></svg>
-          </div>
-          <div>
-            <div class="link-text">Instagram</div>
-            <div class="link-sub">@rizzy_store</div>
-          </div>
-        </a>
-
-        <!-- Telegram (dummy) -->
-        <a class="link-btn" href="#" onclick="return false;">
-          <div class="link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 12l18-7-7 18-3-8-8-3z" stroke="currentColor" stroke-width="1.2"/></svg>
-          </div>
-          <div>
-            <div class="link-text">Telegram</div>
-            <div class="link-sub">@rizzy</div>
-          </div>
-        </a>
-
-        <!-- WhatsApp (this one opens wa.me link) -->
-        <a class="link-btn" id="waBtn" href="https://wa.me/6283873474932" target="_blank" rel="noopener noreferrer">
-          <div class="link-icon" style="background:linear-gradient(180deg,#25D366,#128C7E);border-radius:6px;display:grid;place-items:center">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M20.52 3.48A11.86 11.86 0 0012 0C5.37 0 .03 5.34.03 12 0 13.97.39 15.86 1.12 17.59L0 24l6.6-1.71A11.93 11.93 0 0012 24c6.63 0 11.97-5.34 11.97-12 0-1.95-.5-3.78-1.45-5.52zM12 21.5c-1.14 0-2.25-.3-3.22-.87l-.23-.13L5.5 20l1.5-3.01-.17-.27A8.44 8.44 0 013.5 12c0-4.69 3.81-8.5 8.5-8.5 4.69 0 8.5 3.81 8.5 8.5S16.69 21.5 12 21.5z"/><path d="M17.5 14.2c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.37-1.93-1.22-.71-.65-1.19-1.48-1.32-1.72-.14-.24 0-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.07-.16 0-.3-.04-.42-.04-.12-.54-1.3-.74-1.78-.19-.48-.39-.41-.54-.41-.13 0-.28 0-.43 0-.15 0-.4.05-.61.28-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.57 4.13 3.6 2.43 1.03 2.43.69 2.87.65.44-.04 1.42-.57 1.62-1.12.19-.55.19-1.02.13-1.12-.06-.1-.22-.16-.46-.28z" fill="#fff"/></svg>
-          </div>
-          <div>
-            <div class="link-text">WhatsApp</div>
-            <div class="link-sub">Chat sekarang • 6283873474932</div>
-          </div>
-        </a>
-
-        <!-- YouTube (dummy) -->
-        <a class="link-btn" href="#" onclick="return false;">
-          <div class="link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 8v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2z"/><path d="M10 9l6 3-6 3V9z" fill="currentColor"/></svg>
-          </div>
-          <div>
-            <div class="link-text">YouTube</div>
-            <div class="link-sub">Channel rizzy store</div>
-          </div>
-        </a>
-
-        <!-- TikTok (dummy) -->
-        <a class="link-btn" href="#" onclick="return false;">
-          <div class="link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9.5 3v10.5A4.5 4.5 0 1014 18V7h4V3h-8.5z" stroke="currentColor" stroke-width="1"/></svg>
-          </div>
-          <div>
-            <div class="link-text">TikTok</div>
-            <div class="link-sub">@rizzy</div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Payment DANA -->
-      <div class="payment" style="margin-top:18px">
-        <div class="pay-left">
-          <div class="pay-logo">DANA</div>
-          <div class="pay-info">
-            <div class="pay-title">DANA</div>
-            <div class="pay-number" id="danaNumber">0881012787149</div>
-          </div>
-        </div>
-        <div>
-          <button class="copy-btn" id="copyDanaBtn">Salin</button>
-        </div>
-      </div>
-
-      <div class="footer">Ganti avatar (klik avatar) dengan URL atau file gambarmu untuk menampilkan Obito.</div>
+    <div class="spotify">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
+
+    <footer>
+      © 2025 Rizzy Store. All rights reserved.
+    </footer>
   </div>
 
-  <div class="toast" id="toast">Tersalin</div>
-
-<script>
-  // Klik avatar: jika sudah diganti dengan URL, buka di tab baru; jika belum, beri instruksi
-  document.getElementById('avatarLink').addEventListener('click', function(e){
-    e.preventDefault();
-    const img = document.getElementById('avatarImg').src;
-    // jika masih data URI placeholder, tampilkan peringatan
-    if(img.includes('data:image/svg+xml')) {
-      alert('Silakan ganti elemen <img id=\"avatarImg\"> src dengan URL/file gambar Obito Anda di kode HTML.');
-      return;
-    }
-    window.open(img, '_blank');
-  });
-
-  // Copy DANA number
-  document.getElementById('copyDanaBtn').addEventListener('click', async function(){
-    const num = document.getElementById('danaNumber').innerText.trim();
-    try {
-      await navigator.clipboard.writeText(num);
-      showToast('Nomor DANA disalin: ' + num);
-    } catch (err) {
-      // fallback
-      const input = document.createElement('input');
-      input.value = num; document.body.appendChild(input);
-      input.select(); document.execCommand('copy'); document.body.removeChild(input);
-      showToast('Nomor DANA disalin: ' + num);
-    }
-  });
-
-  // Toast helper
-  function showToast(text){
-    const t = document.getElementById('toast');
-    t.innerText = text;
-    t.style.display = 'block';
-    clearTimeout(t._timeout);
-    t._timeout = setTimeout(()=>{ t.style.display='none'; }, 2000);
-  }
-
-  // Optional: let user replace avatar by dropping URL param ?img=...
-  (function loadAvatarFromQuery(){
-    const params = new URLSearchParams(location.search);
-    const img = params.get('img');
-    if(img){
-      document.getElementById('avatarImg').src = img;
-    }
-  })();
-
-  // If you want to programmatically set the avatar in JS, uncomment and set URL:
-  // document.getElementById('avatarImg').src = 'https://example.com/obito.jpg';
-
-</script>
+  <script>
+    // Pesan otomatis di console
+    console.log("Website dibuat oleh Rizzy Store ❤️");
+  </script>
 </body>
-              </html>
+</html>
